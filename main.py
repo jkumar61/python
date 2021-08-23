@@ -1,33 +1,3 @@
-# Game flow:
-# ----------
-#
-# - The client (player) starts a game by making a POST request to /games.
-#   The POST request contains a representation of a game board, either empty
-#   (computer starts) or with the first move made (player starts).
-#   The player/computer can choose either noughts or crosses.
-#
-# - The backend responds with the location URL of the started game.
-#
-# - Client GETs the board state from the URL.
-#
-# - Client PUTs the board state with a new move to the URL.
-#
-# - Backend validates the move, makes it's own move and updates the game state.
-#   The updated game state is returned in the PUT response.
-#
-# - And so on. The game is over once the computer or the player gets 3 noughts
-#   or crosses, horizontally, vertically or diagonally or there are no moves to
-#   be made.
-#
-#
-# Notes
-# -----
-#
-# - The backend must support multiple ongoing games.
-# - The backend component should run / be compilable on a modern Linux
-#   distribution.
-# - Make sure the source code is clean, readable and contains comments whenever
-#   needed.
 import json
 
 from flask import Flask, render_template
@@ -46,14 +16,12 @@ user = True  # when user is true it means it is X otherwise it is 0
 turns = 0
 
 
-# , methods=['POST']
 @app.route('/games', methods=['POST', 'GET'])
 def print_board(board):
     for row in board:
         for slot in row:
             print(f"{slot} ", end="")
         print()
-    #return 'jai'
 
 
 def quit(user_input):
@@ -193,4 +161,3 @@ while turns < 9:
 if __name__ == '__main__':
     app.run(port=8081)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
