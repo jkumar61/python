@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js"></script>
+    <script>
+        {% include 'js/knockout.js' %}
+    </script>
+    {% csrf_token %}
+    <script type="text/javascript">
+    // using jQuery
+    var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+    </script>
+
+</head>
+<body>
+<div class="loader">
+    <h1>Lets start the game!</h1>
+    <p>Please select where you would like to have the X mark on the board</p>
+    <p>| <span data-bind="text : board()[0]"></span> | <span data-bind="text : board()[1]"></span> | <span data-bind="text : board()[2]"></span></p>
+    <p>| <span data-bind="text : board()[3]"></span> | <span data-bind="text : board()[4]"></span> | <span data-bind="text : board()[5]"></span></p>
+    <p>| <span data-bind="text : board()[6]"></span> | <span data-bind="text : board()[7]"></span> | <span data-bind="text : board()[8]"></span></p>
+
+    {data}
+    <div>
+        <input data-bind="value :farhana" placeholder="Enter number"/>
+        <button data-bind="click : getStarted">Done</button>
+    </div>
+
+</div>
+</body>
+</html>
